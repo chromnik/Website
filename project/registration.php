@@ -42,6 +42,75 @@ session_start();
 <html>
 <body>
 
+<style>
+div
+{
+	background-color: powderblue;
+	width: 500px;
+	height: 600px;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+body
+{
+	background-color: blue;
+}
+
+form
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+
+a
+{
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -75%);	
+}
+
+lable, input
+{
+	display: block;
+}
+
+lable
+{
+	margin-bottom: 50px;
+}
+
+select, option 
+{
+	display: block;
+	margin-left: 60px;
+	
+}
+
+select
+{
+	margin-bottom: 10px;
+}
+
+button
+{
+	background-color: DeepSkyBlue;
+}
+
+
+</style>
+
+<div>
 <h1>Register</h1>
 <form action="registration.php" method="post">
   <label for="fname">First Name: </label><br>
@@ -69,7 +138,7 @@ session_start();
   <button type="submit" name="submit">Submit</button>
 </form>
 
-<p>If you have already registered an account yet, please click <a href="index.php">here</a> to be redirected to the login page<p>
-
+<a href="index.php">Already Registered?</a>
 </body>
+</div>
 </html>

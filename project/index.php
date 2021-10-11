@@ -33,6 +33,62 @@ session_start();
 <html>
 <body>
 
+<style>
+div
+{
+	background-color: powderblue;
+	width: 500px;
+	height: 400px;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+body
+{
+	background-color: blue;
+}
+
+form
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+
+a
+{
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -75%);	
+}
+
+lable, input
+{
+	display: block;
+}
+
+lable
+{
+	margin-bottom: 50px;
+}
+
+button
+{
+	background-color: DeepSkyBlue;
+}
+
+</style>
+
+<div>
 <h1>Log In</h1>
 <form action="index.php" method="post">
 
@@ -46,7 +102,8 @@ session_start();
   <button type="submit" name="submit">Submit</button>
 </form>
 
-<p>If you have not registered an account yet, please click <a href="registration.php">here</a> to be redirected to the registration page<p>
+<a href="registration.php">Register For An Account</a>
+</div>
 
 </body>
 </html>
