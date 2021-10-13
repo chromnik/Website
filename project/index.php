@@ -115,7 +115,7 @@ button
 
 <a href="registration.php">Register For An Account</a>
 
-<p class="errorMessage"><?=$error?></p>
+<p class="errorMessage"><?php echo $error?></p>
 </div>
 
 </body>
