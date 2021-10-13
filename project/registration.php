@@ -154,7 +154,7 @@ button
 </form>
 
 <a href="index.php">Already Registered?</a>
-<p class="errorMessage"><?=$error?></p>
+<p class="errorMessage"><?php echo $error?></p>
 </div>
 </body>
 </html>
