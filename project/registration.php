@@ -19,7 +19,7 @@ session_start();
     }
     else
     {
-     $error = " "
+     $error = " ";
     }
 
     $uquery = "SELECT * FROM users WHERE uname='$uname' ";
@@ -89,7 +89,7 @@ a
 .errorMessage
 {
 	position: absolute;
-	top: 100%;
+	top: 95%;
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
@@ -154,7 +154,7 @@ button
 </form>
 
 <a href="index.php">Already Registered?</a>
-<p class="errorMessage"><?php echo $error?></p>
+<p class="errorMessage"><?php echo (isset($error)&&!empty($error)) ? $error : ''; ?></p>
 </div>
 </body>
 </html>

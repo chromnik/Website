@@ -31,6 +31,7 @@ session_start();
 
 
 
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -115,7 +116,7 @@ button
 
 <a href="registration.php">Register For An Account</a>
 
-<p class="errorMessage"><?php echo $error?></p>
+<p class="errorMessage"><?php echo (isset($error)&&!empty($error)) ? $error : ''; ?></p>
 </div>
 
 </body>
