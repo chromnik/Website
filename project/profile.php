@@ -5,6 +5,37 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: blue;
+  text-align: center;
+  padding: 14px 50px;
+  font-size: 40px;
+  text-decoration: none;
+}
+li a:hover:not(.active) {
+  background-color: grey;
+}
+div.a {
+  position:relative; left:80px; bottom:2px;
+}
+</style>
+</head>
 <body>
 <h3>Welcome!
 
@@ -19,6 +50,13 @@ session_start();
   ?>
   
 </h3>
+<ul>
+ <li><a href="study.php">Study</a></li>
+    <li><a href="quizselection.php">Quizzes</a></li>
+    <li><a href="gradebook.php">GradeBook</a></li>
+</ul>
+<div class="a">
 <a href="logout.php">Logout</a>
+</div>
 </body>
 </html>
