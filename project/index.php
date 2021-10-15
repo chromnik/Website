@@ -6,6 +6,7 @@ session_start();
 {
       $uname = $_POST["uname"];
       $password = $_POST["password"];
+      $error = " ";
 
 
       if(!empty($uname) && !empty($password))
@@ -17,14 +18,16 @@ session_start();
           {
             $_SESSION['uname'] = $uname;
             header("Location: profile.php");
+	    $error = " ";
           }
           else {
-            echo "Error Invalid User Name or Password Input";
+            $error =  "Error Invalid User Name or Password Input";
           }
       }
 }
 
 ?>
+
 
 
 
@@ -71,6 +74,15 @@ a
 	transform: translate(-50%, -75%);	
 }
 
+.errorMessage
+{
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
 lable, input
 {
 	display: block;
@@ -103,6 +115,8 @@ button
 </form>
 
 <a href="registration.php">Register For An Account</a>
+
+<p class="errorMessage"><?php echo (isset($error)&&!empty($error)) ? $error : ''; ?></p>
 </div>
 
 </body>

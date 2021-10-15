@@ -11,19 +11,25 @@ session_start();
     $password = $_POST["password"];
     $password_2 = $_POST["password_2"];
     $gender = $_POST["gender"];
+    $error = " ";
 
     if (pwdMatch($password, $password_2) == true)
     {
-     echo("Oops! Password did not match! Try again. ");
+     $error = "Oops! Password did not match! Try again. "; //original: echo(error"Oops! Password did not match! Try again. ");
+    }
+    else
+    {
+     $error = " ";
     }
 
     $uquery = "SELECT * FROM users WHERE uname='$uname' ";
     $uresult = mysqli_query($conn, $uquery);
     if(mysqli_num_rows($uresult) > 0){
-        echo "Username Already Taken";
+        $error = "Username Already Taken";
     }
 
       else {
+        $error = " ";
         $query = "INSERT INTO users (fname, lname, uname, password, gender) values ('$fname', '$lname', '$uname', '$password', '$gender')";
 
         mysqli_query($conn, $query);
@@ -78,6 +84,15 @@ a
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -75%);	
+}
+
+.errorMessage
+{
+	position: absolute;
+	top: 95%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
 }
 
 lable, input
@@ -139,6 +154,7 @@ button
 </form>
 
 <a href="index.php">Already Registered?</a>
-</body>
+<p class="errorMessage"><?php echo (isset($error)&&!empty($error)) ? $error : ''; ?></p>
 </div>
+</body>
 </html>
