@@ -4,37 +4,37 @@ session_start();
   include("functions.php");
 
   if (isset($_POST["submit"]))  {
-    $name = $_POST["submit"];
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    $uname = $_POST["uname"];
-    $password = $_POST["password"];
-    $password_2 = $_POST["password_2"];
-    $gender = $_POST["gender"];
+    $fname = mysqli_real_escape_string($conn,$_POST["fname"]);
+    $lname = mysqli_real_escape_string($conn,$_POST["lname"]);
+    $uname = mysqli_real_escape_string($conn,$_POST["uname"]);
+    $password = mysqli_real_escape_string($conn,$_POST["password"]);
+    $password_2 = mysqli_real_escape_string($conn,$_POST["password_2"]);
+    $gender = mysqli_real_escape_string($conn,$_POST["gender"]);
     $error = " ";
 
-    if (pwdMatch($password, $password_2) == true)
-    {
-     $error = "Oops! Password did not match! Try again. "; //original: echo(error"Oops! Password did not match! Try again. ");
-    }
-    else
-    {
-     $error = " ";
-    }
+    $errors = array();
+
+    if($_POST["password"] != $_POST["password_2"])
+      {
+        array_push($errors, "Passwords do not match");
+        $perror = "ERROR: Passwords do not match";
+      }
+
 
     $uquery = "SELECT * FROM users WHERE uname='$uname' ";
     $uresult = mysqli_query($conn, $uquery);
     if(mysqli_num_rows($uresult) > 0){
-        $error = "Username Already Taken";
-    }
+        array_push($errors, "Username already exists");
+        $uerror = "ERROR: Username already exists";
+      }
 
-      else {
-        $error = " ";
+      if(count($errors) == 0)
+      {
         $query = "INSERT INTO users (fname, lname, uname, password, gender) values ('$fname', '$lname', '$uname', '$password', '$gender')";
 
         mysqli_query($conn, $query);
 
-        header("Location: successful_registration.html");
+        header("Location: successful_registration.php");
         die;
       }
 
@@ -51,7 +51,7 @@ session_start();
 <style>
 div
 {
-	background-color: powderblue;
+	background-color: CornflowerBlue;
 	width: 500px;
 	height: 600px;
 	position: absolute;
@@ -64,7 +64,7 @@ div
 
 body
 {
-	background-color: blue;
+	background-color: Bisque;
 }
 
 form
@@ -80,16 +80,25 @@ form
 a
 {
 	position: absolute;
-	top: 90%;
+	top: 95%;
 	left: 50%;
 	margin-right: -50%;
-	transform: translate(-50%, -75%);	
+	transform: translate(-50%, -75%);
 }
 
-.errorMessage
+.errorMessageU
 {
 	position: absolute;
-	top: 95%;
+	top: 88%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+.errorMessageP
+{
+	position: absolute;
+	top: 84%;
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
@@ -105,11 +114,11 @@ lable
 	margin-bottom: 50px;
 }
 
-select, option 
+select, option
 {
 	display: block;
 	margin-left: 60px;
-	
+
 }
 
 select
@@ -119,7 +128,7 @@ select
 
 button
 {
-	background-color: DeepSkyBlue;
+	background-color: Bisque;;
 }
 
 
@@ -153,8 +162,11 @@ button
   <button type="submit" name="submit">Submit</button>
 </form>
 
+
+<p class="errorMessageU"><?php echo (isset($uerror)&&!empty($uerror)) ? $uerror : ''; ?></p>
+<p class="errorMessageP"><?php echo (isset($perror)&&!empty($perror)) ? $perror : ''; ?></p>
 <a href="index.php">Already Registered?</a>
-<p class="errorMessage"><?php echo (isset($error)&&!empty($error)) ? $error : ''; ?></p>
 </div>
 </body>
+<?php include("tracker.php"); ?>
 </html>

@@ -1,17 +1,13 @@
 <?php
 
-function pwdMatch($password, $password_2)
+if(!function_exists('mysqli_result'))
 {
-  $result;
-    if ($password !== $password_2)
-    {
-      $result = true;
-    }
-      else
-      {
-        $result = false;
-      }
-  return $result;
+  function mysqli_result($source, $row, $column = 0)
+  {
+    $source ->data_seek($row);
+    $datarow = $source->fetch_array();
+    return $datarow[$column];
+  }
 }
 
 ?>
