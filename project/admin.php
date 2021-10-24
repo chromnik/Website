@@ -4,20 +4,20 @@ session_start();
 
   if (isset($_POST["submit"]))
 {
-      $uname = mysqli_real_escape_string($conn,$_POST["uname"]);
-      $password = mysqli_real_escape_string($conn,$_POST["password"]);
+  $uname = mysqli_real_escape_string($conn,$_POST["uname"]);
+  $password = mysqli_real_escape_string($conn,$_POST["password"]);
       $error = " ";
 
 
       if(!empty($uname) && !empty($password))
       {
-        $query = "SELECT * FROM users WHERE uname = '$uname' AND password = '$password' ";
+        $query = "SELECT * FROM admin WHERE uname = '$uname' AND password = '$password' ";
         $result = mysqli_query($conn, $query);
 
           if(mysqli_num_rows($result))
           {
             $_SESSION['uname'] = $uname;
-            header("Location: profile.php");
+            header("Location: adminProfile.php");
 	    $error = " ";
           }
           else {
@@ -41,8 +41,8 @@ session_start();
 div
 {
 	background-color: CornflowerBlue;
-	width: 500px;
-	height: 350px;
+	width: 400px;
+	height: 300px;
 	position: absolute;
 	text-align: center;
 	top: 50%;
@@ -59,7 +59,7 @@ body
 form
 {
 	position: absolute;
-	top: 40%;
+	top: 50%;
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
@@ -69,16 +69,7 @@ form
 a
 {
 	position: absolute;
-	top: 85%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -75%);
-}
-
-.otherA
-{
-  position: absolute;
-	top: 95%;
+	top: 94%;
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -75%);
@@ -87,7 +78,7 @@ a
 .errorMessage
 {
 	position: absolute;
-	top: 66%;
+	top: 70%;
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
@@ -120,8 +111,8 @@ img {
 <h1 style="text-align:center;">Workforce Security Training</h1>
 <img src="cyber.jpg">
 <div>
-<h2>Log In</h2>
-<form action="index.php" method="post">
+<h2>Administrator Log In</h2>
+<form action="admin.php" method="post">
 
   <label for="uname">User Name: </label><br>
   <input type="text" name="uname" required><br>
@@ -132,9 +123,8 @@ img {
 
   <button type="submit" name="submit">Submit</button>
 </form>
+<a href="index.php">User Login</a>
 
-<a href="registration.php">Register For An Account</a>
-<a class='otherA' href="admin.php">Login as Administrator</a>
 <p class="errorMessage"><?php echo (isset($error)&&!empty($error)) ? $error : ''; ?></p>
 </div>
 

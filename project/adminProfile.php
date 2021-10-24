@@ -5,7 +5,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-<html>
 <head>
 <style>
 ul {
@@ -37,7 +36,7 @@ div.a {
 </style>
 </head>
 <body>
-<h3>Welcome!
+<h3>Logged in as:
 
   <?php if(isset($_SESSION["uname"]))
   {
@@ -51,12 +50,11 @@ div.a {
 
 </h3>
 <ul>
- <li><a href="study.php">Study</a></li>
-    <li><a href="quizselection.php">Quizzes</a></li>
-    <li><a href="gradebook.php">GradeBook</a></li>
+    <li><a href="analytics.php">Analytics</a></li>
+    <li><a href="adminGradebook.php">GradeBook</a></li>
 </ul>
 <div class="a">
-<a href="logout.php">Logout</a>
+<a href="logout.php">Logout<br></a>
 </div>
 </body>
 <?php include("tracker.php"); ?>
