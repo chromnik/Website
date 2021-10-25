@@ -8,7 +8,73 @@ session_start();
 <html>
 <head>
 <style>
+
+body
+{
+	background-color: Bisque;
+}
+
+.grid-container{
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+div.grid-container.one{
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -75%);
+}
+
+div.grid-container.two{
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	top: 92.5%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -75%);
+}
+
+div.grid-item{
+	padding: 14px 50px;
+	text-align: center;
+}
+
+div.contents{
+	background-color: CornflowerBlue;
+	width: 1000px;
+	height: 600px;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+section{
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	top: 87.25%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -75%);
+}
+
 ul {
+	width: 750px;
+	height: 50px;
+    position: absolute;
+	text-align: center;
+	top: 25%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -18,26 +84,44 @@ ul {
 
 li {
   float: left;
+  position: relative;
+  text-align: center;
+  top: 20%;
+  margin-left: 12%;
 }
 
 li a {
   display: block;
   color: blue;
   text-align: center;
-  padding: 14px 50px;
-  font-size: 40px;
+  padding: 14px 25px;
+  font-size: 20px;
   text-decoration: none;
 }
 li a:hover:not(.active) {
   background-color: grey;
 }
 div.a {
-  position:relative; left:80px; bottom:2px;
+  background-color: Bisque;
+	width: 100px;
+	height: 25px;
+	position: absolute;
+	text-align: center;
+	top: 95%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
 }
 </style>
 </head>
 <body>
-<h3>Welcome!
+<div class=contents>
+<ul>
+ <li><a href="study.php">Study</a></li>
+    <li><a href="quizselection.php">Quizzes</a></li>
+    <li><a href="gradebook.php">GradeBook</a></li>
+</ul>
+<h1>Welcome!
 
   <?php if(isset($_SESSION["uname"]))
   {
@@ -49,14 +133,31 @@ div.a {
   }
   ?>
 
-</h3>
-<ul>
- <li><a href="study.php">Study</a></li>
-    <li><a href="quizselection.php">Quizzes</a></li>
-    <li><a href="gradebook.php">GradeBook</a></li>
-</ul>
+</h1>
 <div class="a">
 <a href="logout.php">Logout</a>
+</div>
+
+<div class="grid-container one">
+	<div class=grid-item>Grade: </div>
+	<div class=grid-item> </div>
+	<div class=grid-item>Progress: </div>
+</div>
+
+<section><div><h2>User Registration Info</h2></div><section>
+<div class="grid-container two">
+	<div class=grid-item>Gender: 
+	<?php if(isset($_SESSION["gender"]))
+	{
+		echo $_SESSION['gender'];
+	}
+	?>
+	</div>
+	<div class=grid-item> </div>
+	<div class=grid-item>Registration Date: </div>
+</div>
+
+
 </div>
 </body>
 <?php include("tracker.php"); ?>
