@@ -1,46 +1,3 @@
-<?php
-  session_start();
-  include("dbconnection.php");
-  include("functions.php");
-  $q1 = "";
-  $q2 = "";
-  $q3 = "";
-  $q4 = "";
-  $q5 = "";
-  /*
-  if (isset($_POST["submit"]))  {
-    $q1Done = mysqli_real_escape_string($conn,$_POST["q1Done"]);
-    $q1g = mysqli_real_escape_string($conn,$_POST["q1g"]);
-    $progress = mysqli_real_escape_string($conn,$_POST["progress"]);
-    $error = " ";
-
-    $errors = array();
-
-
-    $uquery = "SELECT * FROM users WHERE uname='$uname' ";
-    $uresult = mysqli_query($conn, $uquery);
-    if(mysqli_num_rows($uresult) > 0){
-        array_push($errors, "Username already exists");
-        $uerror = "ERROR: Username already exists";
-      }
-
-      if(count($errors) == 0)
-      {
-        $query = "INSERT INTO gradebook (q1Done, qlg, progress) values ('$q1Done', '$q1g', '$progress')";
-
-        mysqli_query($conn, $query);
-
-        header("Location: gradebook.php");
-        die;
-      }
-
-  }
-  */
-?>
-
-
-
-
 <!DOCTYPE html>
 <html>
 <body>
@@ -133,7 +90,7 @@ button
 
 <div class=contents>
 <h1>Quiz 1</h1>
-<form action="registration.php" method="post">
+<form action="quiz1.php" method="post">
   <label for="q1">Question 1:</label>
   <select name="q1">
     <option value="answer1">answer1</option>
@@ -176,3 +133,68 @@ button
 </body>
 <?php include("tracker.php"); ?>
 </html>
+
+<?php
+  session_start();
+  include("dbconnection.php");
+  include("functions.php");
+
+  $ra1 = "answer1";
+  $ra2 = "answer1";
+  $ra3 = "answer1";
+  $ra4 = "answer1";
+  $ra5 = "answer1";
+
+  $q1Done = false;
+  $q1g = 0;
+  $progress = 0;
+
+  if(strcmp($_POST["q1"], $ra1) == 0){
+		$q1g++;
+  }
+  if(strcmp($_POST["q2"], $ra2) == 0){
+		$q1g++;
+  }
+  if(strcmp($_POST["q3"], $ra3) == 0){
+		$q1g++;
+  }
+  if(strcmp($_POST["q4"], $ra4) == 0){
+		$q1g++;
+  }
+  if(strcmp($_POST["q5"], $ra5) == 0){
+		$q1g++;
+  }
+
+  echo $q1g;
+
+
+  /*
+  if (isset($_POST["submit"]))  {
+    $q1Done = mysqli_real_escape_string($conn, $q1Done);
+    $q1g = mysqli_real_escape_string($conn,$q1g);
+    $progress = mysqli_real_escape_string($conn,$progress);
+    $error = " ";
+
+    $errors = array();
+
+
+    $uquery = "SELECT * FROM users WHERE uname='$uname' ";
+    $uresult = mysqli_query($conn, $uquery);
+    if(mysqli_num_rows($uresult) > 0){
+        array_push($errors, "Username already exists");
+        $uerror = "ERROR: Username already exists";
+      }
+
+      if(count($errors) == 0)
+      {
+        $query = "INSERT INTO gradebook (q1Done, qlg, progress) values ('$q1Done', '$q1g', '$progress')";
+
+        mysqli_query($conn, $query);
+
+        header("Location: gradebook.php");
+        die;
+      }
+
+  }
+  */
+?>

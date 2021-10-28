@@ -17,6 +17,7 @@ session_start();
           if(mysqli_num_rows($result))
           {
             $_SESSION['uname'] = $uname;
+			$_SESSION['password'] = $password;
             header("Location: profile.php");
 	    $error = " ";
           }
