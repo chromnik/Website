@@ -145,9 +145,9 @@ button
   $ra4 = "answer1";
   $ra5 = "answer1";
 
-  $q1Done = false;
+  $q1Done = 0;
   $q1g = 0;
-  $progress = 0;
+  $progress = 2;
 
   if(strcmp($_POST["q1"], $ra1) == 0){
 		$q1g++;
@@ -167,34 +167,44 @@ button
 
   echo $q1g;
 
+  $SQL = "SELECT * FROM users WHERE uname = '".$_SESSION['uname']."'";//select statement variable that stores conditions for a query
 
-  /*
+   $res = mysqli_query($conn, $SQL);//plugs select statement variable into a mysqli query specifying the conn database as the source
+
+   while($row = mysqli_fetch_array($res)) {//while a row/rows carrying the proper conditions applied in the select statement exists $row will be equal be equal to an array of those row values
+
+     $userID =  $row['userID'] . "<br />";//setting a variable equal to a specific row in the array by specifying it's name
+   }
+
+   $SQL2 = "SELECT * FROM gradebook WHERE userID = '$userID'";
+
+   $res2 = mysqli_query($conn, $SQL2);
+
+   while($row2 = mysqli_fetch_array($res2)) {
+
+     $progress =  $row2['progress'] . "<br />";
+   }
+
+   echo $userID;
+   $progress += 1;
+   $q1Done = 1;
+
+
   if (isset($_POST["submit"]))  {
     $q1Done = mysqli_real_escape_string($conn, $q1Done);
     $q1g = mysqli_real_escape_string($conn,$q1g);
     $progress = mysqli_real_escape_string($conn,$progress);
     $error = " ";
 
-    $errors = array();
+	//the problem area
+    /*
+        $query = "UPDATE gradebook SET q1Done = ?, qlg = ?, progress = ? WHERE userID = ?";
+		$stmt = $conn->prepare($query);
+		$stmt -> bind_param("idd", $q1Done, $q1g, $progress);
+		$stmt -> execute();
 
-
-    $uquery = "SELECT * FROM users WHERE uname='$uname' ";
-    $uresult = mysqli_query($conn, $uquery);
-    if(mysqli_num_rows($uresult) > 0){
-        array_push($errors, "Username already exists");
-        $uerror = "ERROR: Username already exists";
-      }
-
-      if(count($errors) == 0)
-      {
-        $query = "INSERT INTO gradebook (q1Done, qlg, progress) values ('$q1Done', '$q1g', '$progress')";
-
-        mysqli_query($conn, $query);
-
-        header("Location: gradebook.php");
+		header("Location: gradebook.php");
         die;
-      }
-
+	*/
   }
-  */
 ?>
