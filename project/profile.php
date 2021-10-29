@@ -2,14 +2,17 @@
 session_start();
     include('dbconnection.php');
 
+	$gender;
+	$date;
+
     $SQL = "SELECT * FROM users WHERE uname = '".$_SESSION['uname']."'";
 
     $res = mysqli_query($conn, $SQL);
 
     while($row = mysqli_fetch_array($res)) {
 
-      echo $row['gender'] . "<br />";
-      echo $row['date'] . "<br />";
+      $gender =  $row['gender'] . "<br />";
+      $date = $row['date'] . "<br />";
     }
 
 
@@ -159,9 +162,16 @@ div.a {
 <section><div><h2>User Registration Info</h2></div><section>
 <div class="grid-container two">
 	<div class=grid-item>Gender:
+	<?php
+	  echo $gender;
+	?>
 	</div>
 	<div class=grid-item> </div>
-	<div class=grid-item>Registration Date: </div>
+	<div class=grid-item>Registration Date: 
+	<?php
+	  echo $date;
+	?>
+	</div>
 </div>
 
 
