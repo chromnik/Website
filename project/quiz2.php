@@ -89,8 +89,8 @@ button
 </style>
 
 <div class=contents>
-<h1>Quiz 1</h1>
-<form action="quiz1.php" method="post">
+<h1>Quiz 2</h1>
+<form action="quiz2.php" method="post">
   <label for="q1">Question 1:</label>
   <select name="q1">
     <option value="answer1">answer1</option>
@@ -169,43 +169,36 @@ button
 
    while($row3 = mysqli_fetch_array($res3)) {
 
-     $q1Done =  $row3['q1Done'] . "<br />";
+     $q2Done =  $row3['q2Done'] . "<br />";
    }
-   echo $q1Done;
+   echo $q2Done;
 
-   if($q1Done == 0){
+   if($q2Done == 0){
 	   if (isset($_POST["submit"]))  {
-		$q1Done = 1;
+		$q2Done = 1;
 		$progress += 1;
-		$q1Done = mysqli_real_escape_string($conn, $q1Done);
-		$q1g = mysqli_real_escape_string($conn,$q1g);
+		$q2Done = mysqli_real_escape_string($conn, $q2Done);
+		$q2g = mysqli_real_escape_string($conn,$q2g);
 		$progress = mysqli_real_escape_string($conn,$progress);
 		$error = " ";
 
 		if(strcmp($_POST["q1"], $ra1) == 0){
-		$q1g++;
+		$q2g++;
 		  }
 		  if(strcmp($_POST["q2"], $ra2) == 0){
-				$q1g++;
+				$q2g++;
 		  }
 		  if(strcmp($_POST["q3"], $ra3) == 0){
-				$q1g++;
+				$q2g++;
 		  }
 		  if(strcmp($_POST["q4"], $ra4) == 0){
-				$q1g++;
+				$q2g++;
 		  }
 		  if(strcmp($_POST["q5"], $ra5) == 0){
-				$q1g++;
+				$q2g++;
 		  }
 
-		//the problem area
-			/*$query = "UPDATE gradebook SET q1Done = '$q1Done', qlg = '$q1g', progress = '$progress' WHERE userID = '$userID'";
-			mysqli_query($conn, $query);
-
-			header("Location: gradebook.php");
-			die;*/
-
-			$query = "UPDATE `gradebook` SET `q1Done`='$q1Done',`q1g`='$q1g',`progress`='$progress' WHERE `userID` = '$userID'";
+			$query = "UPDATE `gradebook` SET `q2Done`='$q2Done',`q2g`='$q2g',`progress`='$progress' WHERE `userID` = '$userID'";
 			mysqli_query($conn, $query);
 
 			header("Location: gradebook.php");
