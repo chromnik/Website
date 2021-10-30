@@ -197,14 +197,10 @@ button
     $error = " ";
 
 	//the problem area
-    /*
-        $query = "UPDATE gradebook SET q1Done = ?, qlg = ?, progress = ? WHERE userID = ?";
-		$stmt = $conn->prepare($query);
-		$stmt -> bind_param("idd", $q1Done, $q1g, $progress);
-		$stmt -> execute();
+        $query = "UPDATE gradebook SET q1Done = '$q1Done', qlg = '$q1g', progress = '$progress' WHERE userID = '$userID'";
+		mysqli_query($conn, $query);
 
 		header("Location: gradebook.php");
         die;
-	*/
   }
 ?>
