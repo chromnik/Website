@@ -17,6 +17,8 @@ session_start();
 
 	$gender;
 	$date;
+	$progress;
+	$avgGrade;
 
     $SQL = "SELECT * FROM users WHERE uname = '".$_SESSION['uname']."'";
 
@@ -27,6 +29,16 @@ session_start();
       $gender =  $row['gender'] . "<br />";
       $date = $row['date'] . "<br />";
     }
+
+	$SQL2 = "SELECT * FROM gradebook WHERE userID = '$userID'";
+
+   $res2 = mysqli_query($conn, $SQL2);
+
+   while($row2 = mysqli_fetch_array($res2)) {
+
+     $progress =  $row2['progress'] . "<br />";
+	 $avgGrade = $row2['avgGrade'] . "<br />";
+   }
 
 
 
@@ -167,9 +179,17 @@ div.a {
 </div>
 
 <div class="grid-container one">
-	<div class=grid-item>Grade: </div>
+	<div class=grid-item>Grade: 
+	<?php
+	  echo $avgGrade;
+	?>
+	</div>
 	<div class=grid-item> </div>
-	<div class=grid-item>Progress: </div>
+	<div class=grid-item>Progress: 
+	<?php
+	  echo $progress;
+	?>
+	</div>
 </div>
 
 <section><div><h2>User Registration Info</h2></div><section>
