@@ -91,35 +91,35 @@ button
 <div class=contents>
 <h1>Quiz 2</h1>
 <form action="quiz2.php" method="post">
-  <label for="q1">Question 1:</label>
+  <label for="q1">Question 1: What is not a type of malware?</label>
   <select name="q1">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">virus</option>
+    <option value="answer2">phishing</option>
+    <option value="answer3">trojan</option>
   </select><br>
 
-  <label for="q2">Question 2:</label>
+  <label for="q2">Question 2: What is the main goal of ransomware?</label>
   <select name="q2">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">make money</option>
+    <option value="answer2">steal data</option>
+    <option value="answer3">delete data</option>
   </select><br>
 
-  <label for="q3">Question 3:</label>
+  <label for="q3">Question 3: If you find a usb what should you do?</label>
   <select name="q3">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">plug it into my computer</option>
+    <option value="answer2">nothing</option>
+    <option value="answer3">plug it into someone elses computer</option>
   </select><br>
 
-  <label for="q4">Question 4:</label>
+  <label for="q4">Question 4: What is one way to avoid getting malware?</label>
   <select name="q4">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="clicking every link I see link"></option>
+    <option value="answer2">downloading ram</option>
+    <option value="staying off suspicious websites"></option>
   </select><br>
 
-  <label for="q5">Question 5: :</label><br>
+  <label for="q5">Question 5: What is the a worm?</label><br>
   <input type="text" name="q5" required><br>
 
   <button type="submit" name="submit">Submit</button>
@@ -139,11 +139,11 @@ button
   include("dbconnection.php");
   include("functions.php");
 
-  $ra1 = "answer1";
+  $ra1 = "answer2";
   $ra2 = "answer1";
-  $ra3 = "answer1";
-  $ra4 = "answer1";
-  $ra5 = "answer1";
+  $ra3 = "answer2";
+  $ra4 = "answer3";
+  $ra5 = "malware";
 
   $SQL = "SELECT * FROM users WHERE uname = '".$_SESSION['uname']."'";//select statement variable that stores conditions for a query
 

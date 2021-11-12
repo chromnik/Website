@@ -91,35 +91,35 @@ button
 <div class=contents>
 <h1>Quiz 1</h1>
 <form action="quiz1.php" method="post">
-  <label for="q1">Question 1:</label>
+  <label for="q1">Question 1:Question 1: What is the proper way to store a password?</label>
   <select name="q1">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="A sticky note">A sticky note</option>
+    <option value="answer2">An encrypted program that needs a password that you know</option>
+    <option value="answer3">A file named passwords on your desktop</option>
   </select><br>
 
-  <label for="q2">Question 2:</label>
+  <label for="q2">Question 2: Someone asks for your password in an email so that they copy a file that you have. What do you do?</label>
   <select name="q2">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">Yes</option>
+    <option value="answer2">Only if I know them</option>
+    <option value="answer3">No</option>
   </select><br>
 
-  <label for="q3">Question 3:</label>
+  <label for="q3">Question 3: What is it called when someone pretends to be someone that you know in order to gain access.</label>
   <select name="q3">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">social engineering</option>
+    <option value="answer2">social distancing</option>
+    <option value="answer3">societal engineering</option>
   </select><br>
 
-  <label for="q4">Question 4:</label>
+  <label for="q4">Question 4: You receive an email from someone claiming to be your boss with a suspicious link. What do you do?</label>
   <select name="q4">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">click the link</option>
+    <option value="answer2">reply to it</option>
+    <option value="answer3">dont open it</option>
   </select><br>
 
-  <label for="q5">Question 5: :</label><br>
+  <label for="q5">Question 5: What is it called when an attacker tries to gain access to your data through emails?</label><br>
   <input type="text" name="q5" required><br>
 
   <button type="submit" name="submit">Submit</button>
@@ -139,11 +139,11 @@ button
   include("dbconnection.php");
   include("functions.php");
 
-  $ra1 = "answer1";
-  $ra2 = "answer1";
+  $ra1 = "answer2";
+  $ra2 = "answer3";
   $ra3 = "answer1";
-  $ra4 = "answer1";
-  $ra5 = "answer1";
+  $ra4 = "answer3";
+  $ra5 = "phishing";
 
   $SQL = "SELECT * FROM users WHERE uname = '".$_SESSION['uname']."'";//select statement variable that stores conditions for a query
 
@@ -197,13 +197,6 @@ button
 		  if(strcmp($_POST["q5"], $ra5) == 0){
 				$q1g++;
 		  }
-
-		//the problem area
-			/*$query = "UPDATE gradebook SET q1Done = '$q1Done', qlg = '$q1g', progress = '$progress' WHERE userID = '$userID'";
-			mysqli_query($conn, $query);
-
-			header("Location: gradebook.php");
-			die;*/
 
 			$query = "UPDATE `gradebook` SET `q1Done`='$q1Done',`q1g`='$q1g',`progress`='$progress' WHERE `userID` = '$userID'";
 			mysqli_query($conn, $query);

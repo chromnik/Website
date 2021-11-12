@@ -91,35 +91,35 @@ button
 <div class=contents>
 <h1>Quiz 3</h1>
 <form action="quiz3.php" method="post">
-  <label for="q1">Question 1:</label>
+  <label for="q1">Question 1: What is not a symptom of a DDoS attack?</label>
   <select name="q1">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">crashes</option>
+    <option value="answer2">slow down</option>
+    <option value="answer3">files are deleted</option>
   </select><br>
 
-  <label for="q2">Question 2:</label>
+  <label for="q2">Question 2: Which one does not usually involve email?</label>
   <select name="q2">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">MitM</option>
+    <option value="answer2">phishing</option>
+    <option value="answer3">DDoS</option>
   </select><br>
 
-  <label for="q3">Question 3:</label>
+  <label for="q3">Question 3: Which wifi is most likely not a MitM?</label>
   <select name="q3">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">1840832</option>
+    <option value="answer2">WorkWif1</option>
+    <option value="answer3">WorkWifi</option>
   </select><br>
 
-  <label for="q4">Question 4:</label>
+  <label for="q4">Question 4: What is a MitM attack?</label>
   <select name="q4">
-    <option value="answer1">answer1</option>
-    <option value="answer2">answer2</option>
-    <option value="answer3">answer3</option>
+    <option value="answer1">data is syphoned by the attacker during transit</option>
+    <option value="answer2">the system is locked intill the attacker recieves a payment</option>
+    <option value="answer3">the system is spammed with data till it crashes</option>
   </select><br>
 
-  <label for="q5">Question 5: :</label><br>
+  <label for="q5">Question 5: What does DDoS stand for?</label><br>
   <input type="text" name="q5" required><br>
 
   <button type="submit" name="submit">Submit</button>
@@ -139,11 +139,11 @@ button
   include("dbconnection.php");
   include("functions.php");
 
-  $ra1 = "answer1";
+  $ra1 = "answer3";
   $ra2 = "answer1";
-  $ra3 = "answer1";
+  $ra3 = "answer3";
   $ra4 = "answer1";
-  $ra5 = "answer1";
+  $ra5 = "distributed denial-of-service";
 
   $SQL = "SELECT * FROM users WHERE uname = '".$_SESSION['uname']."'";//select statement variable that stores conditions for a query
 
