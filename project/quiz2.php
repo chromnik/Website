@@ -114,9 +114,9 @@ button
 
   <label for="q4">Question 4: What is one way to avoid getting malware?</label>
   <select name="q4">
-    <option value="clicking every link I see link"></option>
+    <option value="answer1">clicking every link I see link</option>
     <option value="answer2">downloading ram</option>
-    <option value="staying off suspicious websites"></option>
+    <option value="answer3">staying off suspicious websites</option>
   </select><br>
 
   <label for="q5">Question 5: What is the a worm?</label><br>
