@@ -1,28 +1,40 @@
 <?php
   session_start();
   include("dbconnection.php");
-  $SQL2 = "SELECT * FROM users WHERE uname = '".$_SESSION['uname']."'";//select statement variable that stores conditions for a query
+  $q1g = 0.0;
+  $q2g = 0.0;
+  $q3g = 0.0;
+  $progress = 0.0;
+  $avgGrade = 0.0;
+  $SQL2 = "SELECT * FROM users WHERE uname IS NOT NULL";//select statement variable that stores conditions for a query
    $res2 = mysqli_query($conn, $SQL2);//plugs select statement variable into a mysqli query specifying the conn database as the source
 
 while($row2 = mysqli_fetch_array($res2)) {//while a row/rows carrying the proper conditions applied in the select statement exists $row will be equal to an array of those row values
-     $userID =  $row2['userID'] . "<br />";//setting a variable equal to a specific row in the array by specifying it's name
+     $userID[] =  $row2['userID'] . "<br />";//setting a variable equal to a specific row in the array by specifying it's name
+	 $fname[] = $row2['fname'] . "<br />";
+	 $lname[] = $row2['lname'] . "<br />";
    }
 
-   $SQL2 = "SELECT * FROM gradebook WHERE userID = '$userID'";
+   /*for($i = 1; $i < count($userID[]); $i++){
+		echo $userID[$i] . $fname[$i] . $lname[$i];
+   }*/
 
-   $res2 = mysqli_query($conn, $SQL2);
+   if (isset($_POST["submit"]))  {
+		$specStudent = $_POST["student"];
+		$SQL2 = "SELECT * FROM gradebook WHERE userID = '$specStudent'";
 
-   while($row2 = mysqli_fetch_array($res2)) {
+	    $res2 = mysqli_query($conn, $SQL2);
 
-     $q1g =  $row2['q1g'] . "<br />";
-	 $q2g = $row2['q2g'] . "<br />";
-	 $q3g = $row2['q3g'] . "<br />";
-	 $progress = $row2['progress'] . "<br />";
+	    while($row2 = mysqli_fetch_array($res2)) {
+
+		  $q1g =  $row2['q1g'] . "<br />";
+		  $q2g = $row2['q2g'] . "<br />";
+		  $q3g = $row2['q3g'] . "<br />";
+		  $progress = $row2['progress'] . "<br />";
+	    }
+
+	    $avgGrade = (($q1g + $q2g + $q3g)/3/5)*100;
    }
-
-   $avgGrade = (($q1g + $q2g + $q3g)/3/5)*100;
-   $query = "UPDATE `gradebook` SET `avgGrade`='$avgGrade' WHERE `userID` = '$userID'";
-   mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -41,13 +53,22 @@ div.contents{
 	transform: translate(-50%, -50%);
 }
 
+form{
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
 table
 {
 	width: 600px;
 	height: 100px;
 	position: absolute;
 	text-align: center;
-	top: 60%;
+	top: 70%;
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
@@ -135,6 +156,22 @@ div.a {
     <li><a href="quizselection.php">Quizes</a></li>
     <li><a href="study.php">Study</a></li>
 </ul>
+
+<form action="admingradebook.php" method="post">
+  <label for="student">Whose Grade would you like to see?</label>
+  <select name="student">
+	<?php
+	for($i = 1; $i < count($userID); $i++){	
+		$id = $userID[$i];
+		$first = $fname[$i];
+		$last = $lname[$i];
+		echo "<option>" . $id . " " . $first . " " . $last . " " . "</option>";
+	}
+	?>
+  </select><br>
+
+  <button type="submit" name="submit">Submit</button>
+</form>
 <table>
  <tr>
   <th>Quiz 1</th>
