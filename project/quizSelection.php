@@ -108,7 +108,7 @@ div.a {
 
 <div class="grid-container">
 	<div class=grid-item><a href="quiz1.php">Quiz 1</a></div>
-	<div class=grid-item><a href="quiz2.php">Quiz 2</a></div>
+	<div class=grid-item><a href="quiz4.php">Quiz 2</a></div>
 	<div class=grid-item><a href="quiz3.php">Quiz 3</a></div>
 </div>
 

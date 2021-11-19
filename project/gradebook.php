@@ -15,7 +15,7 @@ while($row2 = mysqli_fetch_array($res2)) {//while a row/rows carrying the proper
    while($row2 = mysqli_fetch_array($res2)) {
 
      $q1g =  $row2['q1g'] . "<br />";
-	 $q2g = $row2['q2g'] . "<br />";
+	 $q2g = $row2['q4g'] . "<br />";
 	 $q3g = $row2['q3g'] . "<br />";
 	 $progress = $row2['progress'] . "<br />";
    }
