@@ -161,7 +161,7 @@ div.a {
   <label for="student">Whose Grade would you like to see?</label>
   <select name="student">
 	<?php
-	for($i = 1; $i < count($userID); $i++){	
+	for($i = 0; $i < count($userID); $i++){	
 		$id = $userID[$i];
 		$first = $fname[$i];
 		$last = $lname[$i];
