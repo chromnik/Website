@@ -15,9 +15,16 @@ while($row2 = mysqli_fetch_array($res2)) {//while a row/rows carrying the proper
 	 $lname[] = $row2['lname'] . "<br />";
    }
 
-   /*for($i = 1; $i < count($userID[]); $i++){
-		echo $userID[$i] . $fname[$i] . $lname[$i];
-   }*/
+   for($j = 0; $j < count($userID); $j++){
+		$compiled[$j] = $fname[$j] . $lname[$j];
+   }
+
+   for($n = 0; $n < count($compiled); $n++){
+		  $nameNum[$compiled[$n]] = $userID[$n];//I used the compiled name array to set the string values for the associate array and the userID array to set the numeric values
+   }
+
+   selectionSort($compiled, count($compiled));
+
 
    if (isset($_POST["submit"]))  {
 		$specStudent = $_POST["student"];
@@ -34,6 +41,29 @@ while($row2 = mysqli_fetch_array($res2)) {//while a row/rows carrying the proper
 	    }
 
 	    $avgGrade = (($q1g + $q2g + $q3g)/3/5)*100;
+   }
+
+   function selectionSort(&$array, $count){
+		for($k = 0; $k < $count - 1; $k++)//this for loop moves the internal for loop that compares each string across the list of values for each individual value in the list 
+		{//it's count-1 because your comparing each value with the values in front of it
+			$mindex = $k; //this stores the current index in the final list used for comparison in the internal for loop
+			$mins = $array[$k]; // this stores the string value associated with the above stored index value 
+         
+			for($l = $k + 1; $l < $count; $l++) //it's k+1 because you want values other than the current index in the list
+			{
+				if (strcmp($array[$l], $mins) < 0)//for each index in the array the stored string value (mins) is compared to the current indexed string. 
+				{ 
+					$mins = $array[$l]; //mins is set to the currently smallest valued string in the array
+					$mindex = $l; //mindex stores the index where that smallest string was
+				}
+			} 
+			if ($mindex != $k)// basically if you actually found a different index value
+			{
+				$temp = $array[$mindex];//using mindex we can temporarily store the smallest string value
+				$array[$mindex] = $array[$k]; //this places the current string value in where the smallest string value was
+				$array[$k] = $temp; //this places the smallest string value where the prior current string value was
+			}
+		}
    }
 ?>
 
@@ -162,10 +192,7 @@ div.a {
   <select name="student">
 	<?php
 	for($i = 0; $i < count($userID); $i++){	
-		$id = $userID[$i];
-		$first = $fname[$i];
-		$last = $lname[$i];
-		echo "<option>" . $id . " " . $first . " " . $last . " " . "</option>";
+		echo "<option>" . $nameNum[$compiled[$i]] . " " . $compiled[$i] . " " . "</option>";//I needed the first value in the echo statement to be the userID so I used an associative array to get it
 	}
 	?>
   </select><br>
