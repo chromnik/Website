@@ -187,7 +187,7 @@ div.a {
     <li><a href="study.php">Study</a></li>
 </ul>
 
-<form action="admingradebook.php" method="post">
+<form action="adminGradebook.php" method="post">
   <label for="student">Whose Grade would you like to see?</label>
   <select name="student">
 	<?php
