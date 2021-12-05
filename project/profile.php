@@ -174,9 +174,6 @@ div.a {
   ?>
 
 </h1>
-<div class="a">
-<a href="logout.php">Logout</a>
-</div>
 
 <div class="grid-container one">
 	<div class=grid-item>Grade: 
@@ -206,7 +203,9 @@ div.a {
 	?>
 	</div>
 </div>
-
+<div class="a">
+<a href="logout.php">Logout</a>
+</div>
 
 </div>
 </body>

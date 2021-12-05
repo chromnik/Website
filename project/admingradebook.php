@@ -35,7 +35,7 @@ while($row2 = mysqli_fetch_array($res2)) {//while a row/rows carrying the proper
 	    while($row2 = mysqli_fetch_array($res2)) {
 
 		  $q1g =  $row2['q1g'] . "<br />";
-		  $q2g = $row2['q2g'] . "<br />";
+		  $q2g = $row2['q4g'] . "<br />";
 		  $q3g = $row2['q3g'] . "<br />";
 		  $progress = $row2['progress'] . "<br />";
 	    }
@@ -182,9 +182,9 @@ div.a {
 <body>
 <div class=contents>
 <ul>
- <li><a href="profile.php">Profile</a></li>
-    <li><a href="quizselection.php">Quizes</a></li>
-    <li><a href="study.php">Study</a></li>
+ <li><a href="stats.php">Statistics</a></li>
+    <li><a href="IP_Tracker.php">IP Tracker</a></li>
+    <li><a href="adminGradebook.php">Gradebook</a></li>
 </ul>
 
 <form action="adminGradebook.php" method="post">
